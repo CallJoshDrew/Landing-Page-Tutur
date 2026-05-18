@@ -90,9 +90,9 @@
 
 @layer utilities {
   .bg-hero-blobs {
-    background-image:
-      radial-gradient(circle at 92% 8%, oklch(0.7 0.18 285 / 0.55) 0, transparent 22%),
-      radial-gradient(circle at 55% 78%, oklch(0.78 0.14 285 / 0.45) 0, transparent 28%),
-      radial-gradient(circle at 48% 70%, oklch(0.72 0.16 285 / 0.4) 0, transparent 18%);
+    background-image: url("/landing-bg.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 }
