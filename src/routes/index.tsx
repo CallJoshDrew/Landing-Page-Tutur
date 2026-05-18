@@ -102,7 +102,7 @@ function Landing() {
           </button>
           <a
             href="#early-access"
-            className="rounded-full bg-primary px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-105"
+            className="rounded-full bg-primary w-36 text-center py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-105"
           >
             {t.earlyAccess}
           </a>
@@ -110,8 +110,8 @@ function Landing() {
       </header>
 
       {/* Hero */}
-      <main className="relative z-10 mx-auto max-w-7xl px-6 pb-40 pt-20 md:px-12 md:pt-28">
-        <h1 className="max-w-6xl text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-[5.5rem]">
+      <main className="relative z-10 mx-auto max-w-7xl px-6 pb-28 md:pb-0 pt-20 md:px-12 md:pt-28">
+        <h1 className="max-w-6xl text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-[4.5rem]">
           {t.headlineStart}
           <span className="text-primary">{t.headlineAccent}</span>
         </h1>
@@ -119,7 +119,7 @@ function Landing() {
         <form
           id="early-access"
           onSubmit={onSubmit}
-          className="mt-12 flex w-full max-w-xl items-center rounded-full bg-card p-2 shadow-lg"
+          className="mt-12 flex w-full max-w-xl items-center rounded-md md:rounded-full bg-card p-2 shadow-lg"
         >
           <input
             type="email"
@@ -127,33 +127,33 @@ function Landing() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t.emailPlaceholder}
-            className="flex-1 bg-transparent px-5 py-3 text-card-foreground placeholder:text-card-foreground/50 focus:outline-none"
+            className="flex-1 bg-transparent px-3 md:px-5 py-3 text-card-foreground placeholder:text-card-foreground/50 focus:outline-none"
           />
           <button
             type="submit"
-            className="rounded-full bg-primary px-6 py-3 text-sm font-extrabold text-primary-foreground transition hover:brightness-105"
+            className="rounded-md md:rounded-full bg-primary px-3 md:px-6 py-3 text-sm font-extrabold text-primary-foreground transition hover:brightness-105"
           >
             {submitted ? t.submitted : t.submit}
           </button>
         </form>
-        <p className="mt-3 text-xs text-foreground/80">{t.disclaimer}</p>
+        <p className="mt-3 ml-6 text-xs text-foreground/80">{t.disclaimer}</p>
       </main>
 
       {/* Feature strip */}
-      <section className="relative z-10 bg-footer/60 backdrop-blur-sm">
-        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-3 md:px-12">
+      <section className="z-10 relative md:fixed bottom-4 w-full bg-footer/60 backdrop-blur-sm">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-3">
           <Feature
-            icon={<Trees className="h-5 w-5 text-primary" aria-hidden />}
+            icon={<Trees className="h-7 w-7 text-primary" aria-hidden />}
             title={t.f1Title}
             body={t.f1Body}
           />
           <Feature
-            icon={<Home className="h-5 w-5 text-primary" aria-hidden />}
+            icon={<Home className="h-7 w-7 text-primary" aria-hidden />}
             title={t.f2Title}
             body={t.f2Body}
           />
           <Feature
-            icon={<MessageCircle className="h-5 w-5 text-primary" aria-hidden />}
+            icon={<MessageCircle className="h-7 w-7 text-primary" aria-hidden />}
             title={t.f3Title}
             body={t.f3Body}
           />
