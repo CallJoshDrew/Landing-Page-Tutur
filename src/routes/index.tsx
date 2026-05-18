@@ -1,26 +1,157 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { Trees, Home, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/")({
-  component: Index,
+  head: () => ({
+    meta: [
+      { title: "tutur — Your voice is their greatest tool" },
+      {
+        name: "description",
+        content:
+          "Parent-led speech and language sessions for early learners. Every conversation at home is a milestone.",
+      },
+      { property: "og:title", content: "tutur — Your voice is their greatest tool" },
+      {
+        property: "og:description",
+        content:
+          "Parent-led speech and language sessions for early learners. Get early access to tutur.",
+      },
+    ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap",
+      },
+    ],
+  }),
+  component: Landing,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
+function Landing() {
+  const [lang, setLang] = useState<"EN" | "MY">("EN");
+  const [email, setEmail] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    setSubmitted(true);
+  };
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="relative min-h-screen overflow-hidden bg-background bg-hero-blobs">
+      {/* Nav */}
+      <header className="relative z-10 mx-auto flex max-w-7xl items-center justify-between px-6 py-7 md:px-12">
+        <a href="/" className="text-2xl font-extrabold tracking-tight text-foreground">
+          tutur
+        </a>
+        <nav className="flex items-center gap-6 text-sm font-bold">
+          <button
+            onClick={() => setLang("EN")}
+            className={lang === "EN" ? "text-foreground" : "text-foreground/60 hover:text-foreground"}
+            aria-label="English"
+          >
+            EN
+          </button>
+          <button
+            onClick={() => setLang("MY")}
+            className={lang === "MY" ? "text-foreground" : "text-foreground/60 hover:text-foreground"}
+            aria-label="Bahasa Malaysia"
+          >
+            MY
+          </button>
+          <a
+            href="#early-access"
+            className="rounded-full bg-primary px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-105"
+          >
+            Early Access
+          </a>
+        </nav>
+      </header>
+
+      {/* Hero */}
+      <main className="relative z-10 mx-auto max-w-7xl px-6 pb-40 pt-20 md:px-12 md:pt-28">
+        <h1 className="max-w-6xl text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-[5.5rem]">
+          Your voice is their{" "}
+          <span className="text-primary">greatest tool.</span>
+        </h1>
+
+        <form
+          id="early-access"
+          onSubmit={onSubmit}
+          className="mt-12 flex w-full max-w-xl items-center rounded-full bg-card p-2 shadow-lg"
+        >
+          <input
+            type="email"
+            required
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter your email"
+            className="flex-1 bg-transparent px-5 py-3 text-card-foreground placeholder:text-card-foreground/50 focus:outline-none"
+          />
+          <button
+            type="submit"
+            className="rounded-full bg-primary px-6 py-3 text-sm font-extrabold text-primary-foreground transition hover:brightness-105"
+          >
+            {submitted ? "Thanks!" : "Get early access"}
+          </button>
+        </form>
+        <p className="mt-3 text-xs text-foreground/80">
+          No spam. Just updates when we're ready for you.
+        </p>
+      </main>
+
+      {/* Feature strip */}
+      <section className="relative z-10 bg-footer/60 backdrop-blur-sm">
+        <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-3 md:px-12">
+          <Feature
+            icon={<Trees className="h-5 w-5 text-primary" aria-hidden />}
+            title="Parent-led sessions"
+            body="Every conversation at home is a milestone"
+          />
+          <Feature
+            icon={<Home className="h-5 w-5 text-primary" aria-hidden />}
+            title="Every day is a session"
+            body="While waiting, progress continues at home."
+          />
+          <Feature
+            icon={<MessageCircle className="h-5 w-5 text-primary" aria-hidden />}
+            title="It starts with connection"
+            body="Joy, play, presence — you're already there"
+          />
+        </div>
+        <div className="border-t border-border/40">
+          <p className="mx-auto max-w-7xl px-6 py-4 text-center text-xs text-foreground/80 md:px-12">
+            Tutur Technologies PLT is incubated in SEEd Lab, social enterprise incubation programme
+            powered by PETRONAS and Tata Consultancy Services.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
 
-function Index() {
-  return <PlaceholderIndex />;
+function Feature({
+  icon,
+  title,
+  body,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-card/10">
+        {icon}
+      </span>
+      <div>
+        <h3 className="text-sm font-extrabold text-foreground">{title}</h3>
+        <p className="text-xs text-foreground/85">{body}</p>
+      </div>
+    </div>
+  );
 }
