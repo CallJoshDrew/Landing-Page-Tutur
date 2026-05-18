@@ -104,7 +104,7 @@ function Landing() {
             href="#early-access"
             className="rounded-full bg-primary px-5 py-3 text-xs font-extrabold uppercase tracking-wider text-primary-foreground transition hover:brightness-105"
           >
-            Early Access
+            {t.earlyAccess}
           </a>
         </nav>
       </header>
@@ -112,8 +112,8 @@ function Landing() {
       {/* Hero */}
       <main className="relative z-10 mx-auto max-w-7xl px-6 pb-40 pt-20 md:px-12 md:pt-28">
         <h1 className="max-w-6xl text-5xl font-extrabold leading-[1.05] tracking-tight text-foreground md:text-7xl lg:text-[5.5rem]">
-          Your voice is their{" "}
-          <span className="text-primary">greatest tool.</span>
+          {t.headlineStart}
+          <span className="text-primary">{t.headlineAccent}</span>
         </h1>
 
         <form
@@ -126,19 +126,17 @@ function Landing() {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
+            placeholder={t.emailPlaceholder}
             className="flex-1 bg-transparent px-5 py-3 text-card-foreground placeholder:text-card-foreground/50 focus:outline-none"
           />
           <button
             type="submit"
             className="rounded-full bg-primary px-6 py-3 text-sm font-extrabold text-primary-foreground transition hover:brightness-105"
           >
-            {submitted ? "Thanks!" : "Get early access"}
+            {submitted ? t.submitted : t.submit}
           </button>
         </form>
-        <p className="mt-3 text-xs text-foreground/80">
-          No spam. Just updates when we're ready for you.
-        </p>
+        <p className="mt-3 text-xs text-foreground/80">{t.disclaimer}</p>
       </main>
 
       {/* Feature strip */}
@@ -146,24 +144,23 @@ function Landing() {
         <div className="mx-auto grid max-w-7xl gap-8 px-6 py-8 md:grid-cols-3 md:px-12">
           <Feature
             icon={<Trees className="h-5 w-5 text-primary" aria-hidden />}
-            title="Parent-led sessions"
-            body="Every conversation at home is a milestone"
+            title={t.f1Title}
+            body={t.f1Body}
           />
           <Feature
             icon={<Home className="h-5 w-5 text-primary" aria-hidden />}
-            title="Every day is a session"
-            body="While waiting, progress continues at home."
+            title={t.f2Title}
+            body={t.f2Body}
           />
           <Feature
             icon={<MessageCircle className="h-5 w-5 text-primary" aria-hidden />}
-            title="It starts with connection"
-            body="Joy, play, presence — you're already there"
+            title={t.f3Title}
+            body={t.f3Body}
           />
         </div>
         <div className="border-t border-border/40">
           <p className="mx-auto max-w-7xl px-6 py-4 text-center text-xs text-foreground/80 md:px-12">
-            Tutur Technologies PLT is incubated in SEEd Lab, social enterprise incubation programme
-            powered by PETRONAS and Tata Consultancy Services.
+            {t.footer}
           </p>
         </div>
       </section>
