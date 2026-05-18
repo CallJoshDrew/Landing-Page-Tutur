@@ -41,6 +41,43 @@ function Landing() {
     setSubmitted(true);
   };
 
+  const t =
+    lang === "MY"
+      ? {
+          earlyAccess: "Akses Awal",
+          headlineStart: "Suara anda adalah ",
+          headlineAccent: "dunia mereka.",
+          emailPlaceholder: "Masukkan email anda",
+          submit: "Dapatkan akses awal",
+          submitted: "Terima kasih!",
+          disclaimer: "Tiada spam. Hanya kemas kini apabila kami bersedia.",
+          f1Title: "Sesi dipimpin ibu bapa",
+          f1Body: "Setiap perbualan di rumah adalah pencapaian",
+          f2Title: "Setiap hari adalah sesi",
+          f2Body: "Semasa menunggu, kemajuan terus berlaku di rumah",
+          f3Title: "Ia bermula dengan hubungan",
+          f3Body: "Kegembiraan, permainan, kehadiran — anda sudah pun di sana",
+          footer:
+            "Tutur Technologies PLT is incubated in SEEd Lab, social enterprise incubation programme powered by PETRONAS and Tata Consultancy Services.",
+        }
+      : {
+          earlyAccess: "Early Access",
+          headlineStart: "Your voice is their ",
+          headlineAccent: "greatest tool.",
+          emailPlaceholder: "Enter your email",
+          submit: "Get early access",
+          submitted: "Thanks!",
+          disclaimer: "No spam. Just updates when we're ready for you.",
+          f1Title: "Parent-led sessions",
+          f1Body: "Every conversation at home is a milestone",
+          f2Title: "Every day is a session",
+          f2Body: "While waiting, progress continues at home.",
+          f3Title: "It starts with connection",
+          f3Body: "Joy, play, presence — you're already there",
+          footer:
+            "Tutur Technologies PLT is incubated in SEEd Lab, social enterprise incubation programme powered by PETRONAS and Tata Consultancy Services.",
+        };
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-background bg-hero-blobs">
       {/* Nav */}
